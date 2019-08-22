@@ -31,6 +31,14 @@
             text-align: left;
         }
 
+        div.centerImg{
+            text-align: center;
+        }
+
+        div.centerImg img{
+            text-align: center;
+        }
+
         body, html {
             font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
             padding: 0;
@@ -47,57 +55,52 @@
 </head>
 <body>
 
-<select id="sites" onchange="devuelveSite(this.value)" style="width: 30%;font-size: 20px;margin-bottom: 3px;margin-left: 5px; margin-top: 10px">
-    <g:each in="${sites}" var="site">
-        <option id="site" value="${site?.id}">${site?.name}</option>
-    </g:each>
-</select>
 
-<div id="tabla" style="width: 100%;">
+
+<div id="contenedor" style="width: 100%;">
+
+    <select id="sites" onchange="devuelveSite(this.value)" style="width: 30%;font-size: 20px;margin-bottom: 3px;margin-left: 5px; margin-top: 10px">
+        <g:each in="${sites}" var="site">
+            <option id="site" value="${site?.id}">${site?.name}</option>
+        </g:each>
+    </select>
 
     <div id="div1" style="margin-left: 10px;color:#062c33;font-size:15px;font-weight:bold">
     </div>
+
     <div id="divPath" style="margin-left:10px;color: #cc0000;">
         <span class="navbtn" @click="devuelveCategories(path.id)" v-for="path in paths">{{path.name}} -> </span>
     </div>
 
     <div id="divCategories" class="centerTable">
+
         <table border="1" id="tabCategories" style="width: 30%;">
             <thead>
-            <tr>
-                <td style="font-size: 25px;background-color: #fee92a"><b>Categorías</b></td>
-            </tr>
+            <tr> <td style="font-size: 25px;background-color: #fee92a"><b>Categorías</b></td> </tr>
             </thead>
             <tr v-for="category in categories">
-                <td>
-
-                    <A href="#" @click="devuelveCategories(category.id)">
-                         {{category.name}}
-                </A>
-
-                </td>
+                <td><A href="#" @click="devuelveCategories(category.id)"> {{category.name}}</A></td>
             </tr>
         </table>
+
     </div>
 
 
 
-    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog" style="background: #dcefff">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Última categoría hija</h4>
+                    <h4 class="modal-title" style="font-size: 25px">Última categoría hija</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="font-size: 18px;color: #d8c327;margin-left: 10px;">
+                    <div><b>ID:</b> {{category.id}}</div>
+                    <div><b>Name:</b> {{category.name}}</div>
+                    <div><b>Items totales:</b> {{category.total_items_in_this_category}}</div>
 
-                   <ul>
-                       <li>ID: {{category.id}}</li>
-                       <li>Name: {{category.name}}</li>
-                       <li>Items totales: {{category.total_items_in_this_category}}</li>
-                       <img id="imagen" style="width:300px;height:300px;">
-                   </ul>
+                    <div class="centerImg" style="margin-top: 20px"> <img id="imagen" style="width:300px;height:300px;"> </div>
 
                 </div>
                 <div class="modal-footer">
@@ -117,7 +120,7 @@
 <script>
 
     var tabla = new Vue( {
-        el: '#tabla',
+        el: '#contenedor',
         data: {
             categories: [],
             category: [],

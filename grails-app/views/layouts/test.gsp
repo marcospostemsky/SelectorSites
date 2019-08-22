@@ -47,7 +47,7 @@
 <div class="footer row" role="contentinfo">
     <div class="col">
         <strong class="centered">IT Academy</strong>
-        <p>Aquí puede encontrar el repositorio de esta aplicación <a href="http://guides.grails.org" target="_blank">GitHub Repository</a></p>
+        <p>Aquí puede encontrar el repositorio de esta aplicación <a href="https://github.com/marcospostemsky/SelectorSites" target="_blank">GitHub Repository</a></p>
 
 </div>
 
