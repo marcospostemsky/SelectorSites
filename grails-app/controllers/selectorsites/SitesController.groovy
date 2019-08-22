@@ -6,7 +6,7 @@ import groovy.json.JsonSlurper
 class SitesController {
 
     def index() {
-        def url = new URL("https://api.mercadolibre.com/sites")
+        def url = new URL("http://localhost:8080/marcas")
         def connection = (HttpURLConnection) url.openConnection()
         connection.setRequestMethod("GET")
         connection.setRequestProperty("Accept","application/json")
@@ -17,7 +17,7 @@ class SitesController {
     }
 
     def getSites(String site){
-        def url = new URL("https://api.mercadolibre.com/sites/"+site+"/categories")
+        def url = new URL("http://localhost:8080/marcas/"+site+"/articulos")
         def connection = (HttpURLConnection) url.openConnection()
         connection.setRequestMethod("GET")
         connection.setRequestProperty("Accept","application/json")
@@ -29,7 +29,7 @@ class SitesController {
     }
 
     def getCategories(String category){
-        def url = new URL("https://api.mercadolibre.com/categories/"+category)
+        def url = new URL("http://localhost:8080/articulos/"+category)
         def connection = (HttpURLConnection) url.openConnection()
         connection.setRequestMethod("GET")
         connection.setRequestProperty("Accept","application/json")
@@ -39,4 +39,5 @@ class SitesController {
         def resultado = [categories:categories]
         render resultado as JSON
     }
+
 }
