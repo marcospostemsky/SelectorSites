@@ -14,7 +14,7 @@ y al llegar a la última se muestra un modal con la siguiente información:
 Esta aplicación se realiza con el objetivo de practicar con Grails, realizando el front 
 de una app.
 
-#Autor
+## Autor
 
 * Marcos Postemsky
 
