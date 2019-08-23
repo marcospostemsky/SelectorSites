@@ -16,7 +16,7 @@ de una app.
 
 ## Mejoras próximas
 
-* Crear, editar y eliminar marcas.
+* Editar y eliminar marcas.
 * Luego de crear o editar, que permita volver al selector donde se realizó la 
 acción.
 * Agregar vistas de error cuando se consume la APIrest.

@@ -95,7 +95,7 @@
                                 Imagen:<br>
                                 <input type="text" name="picture" value="Imagen">
                                 <br><br>
-                                <input type="submit" value="Crear">
+                                <input type="submit" class="btn btn-danger" value="Crear">
                             </g:form>
 
                         </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" @click="enableEdit()">Editar</button>
-                    <button type="button" class="btn btn-danger"   controller @click="deleteArticulo(category.id)" data-dismiss="modal">Borrar</button>
+                    <button type="button" class="btn btn-danger"   controller @click="deleteArticulo(category.id,category.idMarca)" data-dismiss="modal">Borrar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
 
@@ -167,7 +167,7 @@
                         Imagen:<br>
                         <input type="text" name="picture" :value="category.picture">
                         <br><br>
-                        <input type="submit" value="Crear">
+                        <input type="submit" class="btn btn-danger" value="Aceptar">
                     </g:form>
 
                 </div>
@@ -267,8 +267,9 @@
        tabla.fetchDataCategories(category)
     }
 
-    function deleteArticulo(id) {
+    function deleteArticulo(id,idMarca) {
         tabla.fetchdeleteArticulo(id)
+        devuelveSite(idMarca)
     }
 
     function edit(){
