@@ -1,4 +1,4 @@
-# Aplicación de Sites [IT Academy]
+# Aplicación de Marcas y Articulos [IT Academy]
 
 Esta aplicación permite visualizar marcas y artículos. En este momento permite crear, editar, visualizar y eliminar
 articulos, consumidos de la [APIRest Grails](https://github.com/marcospostemsky/APIrestGrails).
@@ -12,4 +12,14 @@ de una app.
 ## Autor
 
 * Marcos Postemsky
+
+
+## Mejoras próximas
+
+* Crear, editar y eliminar marcas.
+* Luego de crear o editar, que permita volver al selector donde se realizó la 
+acción.
+* Agregar vistas de error cuando se consume la APIrest.
+
+
 
