@@ -13,7 +13,7 @@ class SitesController {
         connection.setRequestProperty("User-Agent","Mozilla/5.0")
         JsonSlurper json = new JsonSlurper()
         def sites = json.parse(connection.getInputStream())
-        [sites:sites]
+        [sites:sites,defecto:3]
     }
 
     def getSites(String site){

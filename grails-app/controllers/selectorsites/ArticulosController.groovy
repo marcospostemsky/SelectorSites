@@ -8,14 +8,6 @@ class ArticulosController {
     def index() { }
 
     def edit (params) {
-        def name = params.name
-        def jsonSlurper = new JsonSlurper()
-
-        /*def data = '{ ' +
-                "\"name\":"+"\""+ params.name+"\","+
-                "\"picture\":"+"\""+ params.name+"\","+
-                "\"total_items_in_this_category\":"+"\""+ params.total_items_in_this_category+"\"," +
-                "\"marca\":"+"\""+ "2" +"\"}"       */
         def data = '{ ' +
                 "\"name\":"+"\""+ params.name+"\","+
                 "\"picture\":"+"\""+ params.picture+"\","+
@@ -32,8 +24,11 @@ class ArticulosController {
         wr.write(data);
         wr.flush();
         JsonSlurper json = new JsonSlurper()
+
         def items = json.parse(conn.getInputStream())
-        render items as JSON
+
+        redirect action: 'index', controller: 'sites'
+
     }
 
 
@@ -45,7 +40,7 @@ class ArticulosController {
                 "\"total_items_in_this_category\":"+"\""+ params.total_items_in_this_category+"\"," +
                 "\"marca\":"+"\""+ params.marca +"\"}"
 
-
+        println(data)
         def url = new URL("http://localhost:8080/articulos/");
         def conn = (HttpURLConnection) url.openConnection()
         conn.setDoOutput(true);
@@ -58,7 +53,7 @@ class ArticulosController {
         wr.flush();
         JsonSlurper json = new JsonSlurper()
         def items = json.parse(conn.getInputStream())
-        render items as JSON
+        redirect action: 'index', controller: 'sites'
     }
 
     def delete (String articulo){

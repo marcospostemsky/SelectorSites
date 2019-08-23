@@ -60,7 +60,7 @@
 <div id="contenedor" style="width: 100%;">
 
     <div>
-    <select id="sites" onchange="devuelveSite(this.value)" style="width: 30%;font-size: 20px;margin-bottom: 3px;margin-left: 5px; margin-top: 10px">
+    <select id="sites" value="${defecto}" onchange="devuelveSite(this.value)" style="width: 30%;font-size: 20px;margin-bottom: 3px;margin-left: 5px; margin-top: 10px">
         <g:each in="${sites}" var="site">
             <option id="site" value="${site?.id}">${site?.name}</option>
         </g:each>
@@ -82,12 +82,10 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="modal-body" id="edit">
+                        <div class="modal-body" id="create">
 
-                            <g:form controller="articulos" action="create">
-                                Marca del artículo:<br>
-                                <input type="text" name="marca" value="1">
-                                <br>
+                            <g:form controller="articulos" action="create" id="create-form">
+                                <input type="hidden" name="marca" :value=sites.value>
                                 Nombre del articulo:<br>
                                 <input type="text" name="name" value="Artículo">
                                 <br>
@@ -104,7 +102,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -151,9 +149,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" @click="enableEdit()">Editar</button>
-                    <button type="button" class="btn btn-default" @click="deleteArticulo(category.id)" data-dismiss="modal">Borrar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" @click="enableEdit()">Editar</button>
+                    <button type="button" class="btn btn-danger"   controller @click="deleteArticulo(category.id)" data-dismiss="modal">Borrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
 
                 <div class="modal-body" id="edit" >
@@ -278,9 +276,12 @@
     }
 
     function enableEdit(){
-
-        document.getElementById("edit").style.display = "inline"
-
+        var x = document.getElementById("edit");
+        if(window.getComputedStyle(x).display === "none") {
+            document.getElementById("edit").style.display = "inline"
+        } else {
+            document.getElementById("edit").style.display = "none"
+        }
     }
 
 
